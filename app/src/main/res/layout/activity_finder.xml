@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="org.andrewgarner.amessage.FinderActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="#ffeeeeee">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_square_background"
+        android:layout_margin="10dp"
+        android:paddingBottom="0dp">
+
+        <TextView android:text="Search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp"
+            android:visibility="gone"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:weightSum="1">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/editText"
+                    android:maxLines="1"
+                    android:scrollbars="none"
+                    android:hint="All Friends"
+                    android:scrollHorizontally="false"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textEmailAddress|textCapSentences"
+                    android:elevation="10dp" />
+            </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No results..."
+                android:id="@+id/noResults"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:visibility="gone"
+            android:textSize="30sp" />
+
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progress"
+                android:indeterminate="true"
+                android:visibility="invisible"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Friend Requests"
+            android:id="@+id/requests"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp" />
+
+        <Space
+            android:id="@+id/finder_space"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:stackFromBottom="false"
+            android:transcriptMode="alwaysScroll"
+            android:paddingBottom="0dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

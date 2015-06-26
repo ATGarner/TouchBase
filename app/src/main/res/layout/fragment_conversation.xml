@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingBottom="0dp" android:id="@+id/root"
+    android:focusableInTouchMode="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMe"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="3dp"
+        android:paddingBottom="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="3dp"> <!--android:background="@drawable/top_border"-->
+        <!--android:background="#ffffff"-->
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/messageBox"
+            android:hint="Send Message"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/sendButton"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
+            android:background="@null"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textCursorDrawable="@null"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:imeOptions="actionSend"
+            android:visibility="visible"
+            android:layout_marginEnd="15dp"/>
+
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:id="@+id/sendButton"
+            android:src="@drawable/sendbutton"
+            android:background="#ffffffff"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_alignTop="@+id/messageBox"
+            android:layout_alignBottom="@+id/messageBox"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"/>
+
+    </RelativeLayout>
+
+<!--    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_above="@+id/textMe"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="#ffeeeeee"
+        android:visibility="gone">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LLParent">
+
+            </LinearLayout>
+
+    </ScrollView>-->
+    <ListView
+        android:id="@+id/listview"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textMe"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:stackFromBottom="true"
+        android:background="#ffeeeeee"
+        android:transcriptMode="alwaysScroll"
+        android:focusable="true"
+        android:focusableInTouchMode="true"><!--android:transcriptMode="alwaysScroll"-->
+    </ListView>
+</RelativeLayout>

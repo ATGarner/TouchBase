@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">TouchBase</string>
+
+    <!-- Google sender ID, get yours in your Google API console-->
+    <string name="google_sender_id">YOUR SENDER ID. CHANGE THIS!</string>
+
+    <!--Secret Server variable for server communication-->
+    <string name="secret">secret</string><!-- Change this!-->
+
+    <!-- URLS -->
+    <string name="url_signin">https://www.YourUrl.com/signin.php</string>
+    <string name="url_sendmessage">https://www.YourUrl.com/sendmessage.php</string>
+    <string name="url_search">https://www.YourUrl.com/search.php</string>
+    <string name="url_sendrequest">https://www.YourUrl.com/sendrequest.php</string>
+    <string name="url_respondrequest">https://www.YourUrl.com/respondrequest.php</string>
+    <string name="url_unfriend">https://www.YourUrl.com/unfriend.php</string>
+    <string name="url_sendphoto">https://www.YourUrl.com/sendphoto.php</string>
+
+
+
+    <!--Drawer Strings -->
+    <string name="title_section1">Conversations</string>
+    <string name="title_section2">All Friends</string>
+    <string name="title_section3">Friend Requests</string>
+    <string name="title_section4">Find Friends</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- -->
+
+    <!--Menu Titles -->
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_list">List</string>
+    <string name="action_gcm">GCM</string>
+    <string name="action_server">Server</string>
+    <string name="action_signin">Signin</string>
+    <string name="action_finder">Find Friends</string>
+    <!-- -->
+
+    <!-- TAG String -->
+    <string name="TAG">andrewgarner</string>
+    <!-- -->
+
+    <!-- Preferences -->
+    <string name="MY_PREFS">TOUCHBASE1</string>
+    <string name="MY_PREFS_MyUUID">MYUUID1</string>
+    <string name="MY_PREFS_FirstRun">FIRSTRUN1</string>
+    <string name="MY_PREFS_GCM_Registration_ID">registration_id</string>
+    <!-- -->
+
+    <!-- Bundle and SavedInstanceState variable names-->
+    <string name="bundle_pager_position">bundle_pager_position</string>
+
+    <string name="bundle_list_position">bundle_list_position</string>
+    <string name="bundle_list_clicked">bundle_list_clicked</string>
+
+    <string name="bundle_message_user">bundle_message_user</string>
+    <string name="bundle_message_position">bundle_message_position</string>
+    <string name="bundle_message_sendbar_text">bundle_message_sendbar_text</string>
+
+    <string name="bundle_finder_position">bundle_finder_position</string>
+    <string name="bundle_finder_page">bundle_finder_page</string>
+    <string name="bundle_finder_search_string">bundle_finder_search_string</string>
+
+    <string name="bundle_profile_user">bundle_profile_user</string>
+    <string name="bundle_profile_signout">bundle_profile_signout</string>
+    <string name="bundle_profile_unfriend">bundle_profile_unfriend</string>
+    <string name="bundle_profile_unfriend_user">bundle_profile_unfriend_user</string>
+
+    <string name="UID">UID</string>
+    <string name="NAME">NAME</string>
+    <string name="EMAIL">EMAIL</string>
+
+    <!---->
+    <string name="testt">a</string>
+    <!---->
+    <string name="dateFormat">MMM d, h:mma</string>
+
+
+    <!-- Activity Titles-->
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_gcm">GCMActivity</string>
+    <string name="title_activity_list_request_activity">Friend Requests</string>
+    <string name="title_activity_signin">Signin</string>
+    <string name="title_activity_newconvo">All Friends</string>
+    <string name="title_activity_finder">Find Friends</string>
+    <string name="title_activity_conversation">Conversation</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <!-- -->
+</resources>

@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <!--<item android:id="@+id/action_example" android:title="@string/action_example"
+        app:showAsAction="withText|ifRoom" />-->
+    <item
+        android:title="Andrew"
+        android:id="@+id/action_add"
+        android:orderInCategory="79"
+        android:icon="@drawable/notification_icon"
+        app:showAsAction="always"
+        android:visible="false"/>
+    <item
+        android:title=""
+        android:id="@+id/action_user"
+        android:orderInCategory="80"
+        app:showAsAction="always"
+        android:visible="false"/>
+
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" android:visible="false"/>
+
+    <item android:id="@+id/action_list" android:title="All Friends"
+        android:orderInCategory="101" app:showAsAction="never" android:visible="false"/>
+
+    <item android:id="@+id/action_gcm" android:title="@string/action_gcm"
+        android:orderInCategory="102" app:showAsAction="never" android:visible="false"/>
+
+    <item android:id="@+id/action_finder" android:title="Finder"
+        android:orderInCategory="103" app:showAsAction="never" android:visible="false"/>
+    <item android:id="@+id/action_requests" android:title="Friend Requests"
+        android:orderInCategory="100" app:showAsAction="always" android:visible="false"/>
+
+    <item android:id="@+id/action_signin" android:title="@string/action_signin"
+        android:orderInCategory="103" app:showAsAction="never" android:visible="false"/>
+</menu>
