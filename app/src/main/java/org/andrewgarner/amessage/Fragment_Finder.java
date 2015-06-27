@@ -245,18 +245,31 @@ public class Fragment_Finder extends Fragment implements BitmapHelper.BitmapHelp
             //put some extra space in the box if the list is empty and check if null
             if(userList!=null) {
                 if (!userList.isEmpty()) {
+                    Log.d(TAG, "finder / showFriends / not empty or null");
                     v.findViewById(R.id.finder_space).setVisibility(View.GONE);
+                    EditText editText = (EditText) v.findViewById(R.id.editText);
+                    editText.setHint("All Friends");
+                    editText.setText("");
                 } else {
+                    Log.d(TAG, "finder / showFriends / list empty");
                     v.findViewById(R.id.finder_space).setVisibility(View.VISIBLE);
+                    EditText editText = (EditText) v.findViewById(R.id.editText);
+                    editText.setHint("Tap here to find friends!");
+                    editText.setText("");
+                    //editText.requestFocus();
                 }
+            }else{
+                Log.d(TAG, "finder / showFriends / list null");
+                v.findViewById(R.id.finder_space).setVisibility(View.VISIBLE);
+                EditText editText = (EditText) v.findViewById(R.id.editText);
+                editText.setHint("Tap here to search for friends!");
+                editText.setText("");
             }
 
             //hide the "no results" textview
             v.findViewById(R.id.noResults).setVisibility(View.GONE);
             //set the edittext hint and remove input text
-            EditText editText = (EditText) v.findViewById(R.id.editText);
-            editText.setHint("All Friends");
-            editText.setText("");
+
             //make sure the search box is displayed
             v.findViewById(R.id.editText).setVisibility(View.VISIBLE);
             v.findViewById(R.id.requests).setVisibility(View.GONE);
@@ -358,6 +371,7 @@ public class Fragment_Finder extends Fragment implements BitmapHelper.BitmapHelp
         String text = request.getRequest_message();
         text = text.replace("\\n", "\n");
         text = text.replace("\\'", "'");
+        text = text.replace("\\\"", "\"");
         final TextView tv = new TextView(getActivity());
         tv.setText(text);
 

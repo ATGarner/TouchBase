@@ -40,6 +40,7 @@ public class NotificationHelper {
         //format the text properly
         text = text.replace("\\n","\n");
         text = text.replace("\\'","'");
+        text = text.replace("\\\"", "\"");
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -146,6 +147,7 @@ public class NotificationHelper {
 
         text = text.replace("\\n","\n");
         text = text.replace("\\'","'");
+        text = text.replace("\\\"", "\"");
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         mNotificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);

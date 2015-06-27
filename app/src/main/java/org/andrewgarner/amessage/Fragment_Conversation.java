@@ -181,6 +181,12 @@ public class Fragment_Conversation extends Fragment {
             }
 
         } else {
+            View v =getView();
+            if(v!=null) {
+                EditText edittxt = (EditText) v.findViewById(R.id.messageBox);
+                edittxt.setText("");
+                mText="";
+            }
             mUID = user.getUID();
             setUser();
         }
@@ -349,7 +355,6 @@ public class Fragment_Conversation extends Fragment {
 
         et.setText("");
         if (!messageText.equals("")) { //check that message isn't empty
-
             AMessage newMessage = AMHelper.createMessageReturnAMessage(mUID, messageText, null, true);
             Log.i(TAG, "New message isSelf()= " + newMessage.isSelf());
 

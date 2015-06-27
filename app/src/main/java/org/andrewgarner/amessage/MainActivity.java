@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -358,6 +359,7 @@ public class MainActivity extends ActionBarActivity implements
      * recreates the app to go back to signin page
      */
     private  void signout(){
+        findViewById(R.id.container).setVisibility(View.GONE);
         MyDBHelper DBH = new MyDBHelper(this);
         DBH.clearDB();
         SharedPreferences settings = getSharedPreferences(getString(R.string.MY_PREFS), Context.MODE_PRIVATE);

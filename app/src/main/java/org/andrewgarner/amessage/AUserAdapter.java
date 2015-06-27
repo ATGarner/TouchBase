@@ -318,6 +318,7 @@ public class AUserAdapter extends BaseAdapter {
 
         text = text.replace("\\n","\n");
         text = text.replace("\\'","'");
+        text = text.replace("\\\"", "\"");
 
 
         holder.nameTV.setText(name);

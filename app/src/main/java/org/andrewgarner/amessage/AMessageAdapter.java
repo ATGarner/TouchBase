@@ -81,6 +81,7 @@ public class AMessageAdapter extends BaseAdapter {
         String text = msg.getText();
         text = text.replace("\\n", "\n");
         text = text.replace("\\'", "'");
+        text = text.replace("\\\"", "\"");
 
         long timestamp = msg.getDate();
         if (timestamp < 14000000000L)
