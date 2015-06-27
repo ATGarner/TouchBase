@@ -270,6 +270,9 @@ public class Fragment_Conversation extends Fragment {
     private void broadcastHelper(AMessage amsg){
         AMA.addMessage(amsg);
         try {
+            Log.wtf(TAG, "--------------------------");
+            Log.wtf(TAG, ">>>> Convo / BroadcastHelper / "+mListener.getCurrentPageForConvoFrag()+" "+mListener.isActivityActive());
+            Log.wtf(TAG, "--------------------------");
             if (mListener.getCurrentPageForConvoFrag() == 2 && mListener.isActivityActive()) {
                 clearNotification();
             }

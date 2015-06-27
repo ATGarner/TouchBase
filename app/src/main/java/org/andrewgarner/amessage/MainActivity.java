@@ -34,6 +34,9 @@ public class MainActivity extends ActionBarActivity implements
     //TODO: Change variables in String.xml, including...
     //TODO: google_sender_id, secret, and the URLs
     //TODO: Also check the manifest and put in your own info
+    //TODO: Put these in your gradle dependencies
+    //TODO:    compile 'com.android.support:appcompat-v7:21.0.3'
+    //TODO:    compile 'com.google.android.gms:play-services:7.0.0'
 
     //Tag for logging purposes. The tag is in String.xml
     private String TAG;
@@ -60,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements
     private GoogleApiClient mGoogleApiClient;
     //false when activity has been paused, true if it has been resumed.
     //this is used for the conversation fragment to ensure proper dismissal of notifications
-    private boolean activityActive=false;
+    private boolean activityActive=true;
 
 
     @Override
@@ -106,12 +109,11 @@ public class MainActivity extends ActionBarActivity implements
     @Override
     protected void onPause(){
         super.onPause();
-        activityActive=false;
-        //keepChildren=true;
         Log.d(TAG, "Main / onPause");
     }
     @Override
     protected void onStop(){
+        activityActive=false;
         super.onStop();
         Log.d(TAG, "Main / onStop");
 

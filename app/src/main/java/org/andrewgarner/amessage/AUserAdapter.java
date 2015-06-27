@@ -110,13 +110,6 @@ public class AUserAdapter extends BaseAdapter {
         mAdapterListener = listener;
     }
 
-    /*public void refreshMe(){
-        //messageList = AMH.selectRecentMessages();
-        notifyDataSetChanged();
-        Log.v(TAG, "AUserAdapter / refreshme");
-    }*/
-
-
     @Override
     public int getCount() {
         if(isMessageList)
@@ -126,21 +119,12 @@ public class AUserAdapter extends BaseAdapter {
         return requestList.size();
     }
 
-    /*public void removeRequest(int i){
-        Log.d(TAG, "remove Request "+i);
-        try {
-            if(isAllList)
-                userList.remove(i);
-            if(isRequestList)
-                requestList.remove(i);
-            notifyDataSetChanged();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
     public void conversationSelected(AUser userSelected){
         Log.v(TAG,"UserAdapter / conversationSelected: "+userSelected.getEmail());
         this.userSelected=userSelected;
+        lastClicked=-1;
+        if(lastGrayBar!=null)
+            lastGrayBar.setVisibility(View.GONE);
         notifyDataSetChanged();
     }
 
@@ -198,12 +182,12 @@ public class AUserAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     if (mAdapterListener != null) {
                         Log.v(TAG, "LIST / addConvo / onClick user="+user.getEmail());
-
-                        mAdapterListener.openConversation(user);
-                        //Below sets up the gray bar next to the conversation, showing that it is open
                         if(lastGrayBar!=null){
                             lastGrayBar.setVisibility(View.GONE);
                         }
+                        mAdapterListener.openConversation(user);
+                        //Below sets up the gray bar next to the conversation, showing that it is open
+
                         lastClicked=position;
                         lastGrayBar=holder.grayBar;
                         holder.grayBar.setVisibility(View.VISIBLE);
