@@ -111,43 +111,6 @@ public class Fragment_Pager extends Fragment {
         setup();
     }
 
-    public void rotateHandler(Bundle b){
-        bundleHandler(b);
-        rotateSetup();
-    }
-    public void rotateSetup(){
-        View v = getView();
-        if(v==null){
-            Log.wtf(TAG,"View is null...");
-        }else{
-            Log.wtf(TAG,"View is not null!!!");
-        }
-
-        mAdapter = new ListPagerAdapter(getActivity().getFragmentManager());
-
-        mPager = (ViewPager)getActivity().findViewById(R.id.pager);
-        mPager.setAdapter(mAdapter);
-        mPager.setCurrentItem(pager_start_position);
-
-        if(pager_start_position==0){ //go to previously opened page if rotated
-            getActivity().setTitle("Friends");
-        }else if(pager_start_position==1){
-            getActivity().setTitle("TouchBase");
-        }
-        mPager.setOffscreenPageLimit(2); //allows all 3 pages to be open in memory at once
-
-
-        if(list_start_position>0){ //see if we were previously scrolled down somewher on the
-            setListPosition(list_start_position);
-        }
-
-        if(mUser!=null){
-            //if we got a user conversation from the rotation, open it again. scroll if we were on that page
-            Log.v(TAG, "Fragment_Pager / onActivityCreated / mUser is" + mUser.getEmail());
-            openConversation(mUser,pager_start_position==2);
-        }
-    }
-
     public void setup(){
         setRetainInstance(false);
         SharedPreferences prefs = getActivity().getSharedPreferences(getString(R.string.MY_PREFS), getActivity().MODE_PRIVATE);

@@ -37,7 +37,9 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Class to handle Server Interactions
+ * Class to send data to the server or downloading pictures.
+ * Includes functions for:
+ * Downloading photos, Sending messages, sending photos, searching, friend requests, unfriending
  * Created by Andrew on 4/30/2015.
  */
 public class ServerHelper {
@@ -55,7 +57,7 @@ public class ServerHelper {
 
 
     private String mSecretString; //TODO: Change this in String.xml to your own secret
-    //The below items are POST variables to interact with the server
+    //The below items are POST variable names to use when interacting with the server
     //If they are changed here, they must be changed on the server files or else
     //it will not run properly.
     private String mSecret="secret";
@@ -128,7 +130,9 @@ public class ServerHelper {
 
     private class DownloadPictureTask extends AsyncTask<AUser, Void, Bitmap> {
         AUser user;
+        //ImageView to set the downloaded picture to
         ImageView iv;
+        //Progress bar spinner to show loading
         ProgressBar bar;
         boolean save;
 
@@ -172,6 +176,7 @@ public class ServerHelper {
                 if(save) { //if we want to save the bitmap to device storage
                     FileOutputStream fos;
                     try {
+                        //Put the bitmap in private storage with the name of the user ID
                         fos = mContext.openFileOutput(user.getUID(), Context.MODE_PRIVATE);
                         bitmapResult.compress(Bitmap.CompressFormat.PNG, 100, fos);
                         fos.close();
@@ -199,8 +204,11 @@ public class ServerHelper {
             if(bitmapResult!=null) {
 
                 BitmapHelper BH = new BitmapHelper(mContext);
-                if(iv!=null){
+                if(iv!=null){ //Make sure Imageview isn't null
+                    //Check the tag on the imageview, if we the user has scrolled it may
+                    //want another picture instead, so in that case don't set it
                     if(user.getUID().equals(iv.getTag())) {
+                        //make the bitmap a circle and set it to the imageview
                         iv.setImageBitmap(BH.circleBM(bitmapResult));
                         iv.setVisibility(View.VISIBLE);
                     }
@@ -214,6 +222,12 @@ public class ServerHelper {
 
         }
 
+        /**
+         * Opens up a connection with a URL, get the input, convert to bitmap
+         * @param src URL of the picture
+         * @return Bitmap of the user profile picture
+         * @throws IOException
+         */
         private Bitmap getBitmapFromURL(String src) throws IOException{
 
             java.net.URL url = new java.net.URL(src);
@@ -230,6 +244,10 @@ public class ServerHelper {
     }
 
     /********************************   SEND MESSAGE   ******************************************/
+    /**
+     * Sends a message to the server
+     * @param msg Object that holds all the necessary information to send
+     */
     public void sendMessage(AMessage msg){
 
         new SendMessageTask().execute(msg);
@@ -309,6 +327,12 @@ public class ServerHelper {
     /********************************** SEND PHOTO *******************************************/
 
     //TODO: This isn't fully implemented yet
+
+    /**
+     * Send a photo to the server,
+     * needs to be implemented as a message, just in test phase right now
+     * @param uid send the profile picture of a user by their uid
+     */
     public void sendPhoto(String uid){
         BitmapHelper bh = new BitmapHelper(mContext);
         Bitmap b = bh.getUserBitmap(uid);
@@ -408,6 +432,13 @@ public class ServerHelper {
         }
 
     }
+
+    /**
+     * Save the image as a file object
+     * @param bitmap to make into file
+     * @param name name of the file
+     * @return
+     */
     private File persistImage(Bitmap bitmap, String name) {
         File filesDir = mContext.getFilesDir();
         File imageFile = new File(filesDir, name + ".jpg");
@@ -424,7 +455,12 @@ public class ServerHelper {
         }
         return null;
     }
+
     /***************************   SEARCH   *********************************************/
+    /**
+     * Searches the server for a name or email
+     * @param searchString String to search on
+     */
     public void search(String searchString){
 
         new SearchTask(searchString).execute();
@@ -468,10 +504,11 @@ public class ServerHelper {
 
         try {
 
+            //Get self ID so that we don't get ourselves in a search
             AUserHelper UH = new AUserHelper(mContext);
             String myUUID = UH.getSelfID();
 
-            // Add your data
+            // Add data
             List<NameValuePair> nameValuePairs = new ArrayList<>(2);
             nameValuePairs.add(new BasicNameValuePair(mSecret, mSecretString));
             nameValuePairs.add(new BasicNameValuePair(mSearch,searchString));
@@ -498,9 +535,16 @@ public class ServerHelper {
     }
 
     /***************************   SEND REQUEST   *********************************************/
-    public void request(String uid, String searchString){
+    /**
+     * Send a friend request to a user
+     * We've already checked if the user is a friend or has a request
+     * But if that somehow fails, the user will still not see it.
+     * @param uid UID of the person we are sending it to
+     * @param requestString Message that accompanies the request
+     */
+    public void request(String uid, String requestString){
 
-        new RequestTask(uid, searchString).execute();
+        new RequestTask(uid, requestString).execute();
     }
 
     private class RequestTask extends AsyncTask<Void, Void, String> {
@@ -577,7 +621,12 @@ public class ServerHelper {
         }
         return "";
     }
-    /***************************   SEND REQUEST RESPONSE   *********************************************/
+    /***************************   REQUEST RESPONSE   *********************************************/
+    /**
+     * Respond to a friend request
+     * @param request object of the request responding to
+     * @param response boolean yes or no to accept it
+     */
     public void requestResponse(ARequest request, boolean response){
 
         new RequestResponseTask(request,response).execute();
@@ -660,7 +709,11 @@ public class ServerHelper {
         }
         return "";
     }
-    /***************************   SEND REQUEST RESPONSE   *********************************************/
+    /***************************   UNFRIEND   *********************************************/
+    /**
+     * Unfriends a particular user
+     * @param user Who to unfriend
+     */
     public void unfriend(AUser user){
 
         new unfriendTask(user).execute();
@@ -734,7 +787,7 @@ public class ServerHelper {
         }
         return "";
     }
-    /************** SIGN IN *******************************************/
+    /**************    *******************************************/
 
 
 }
